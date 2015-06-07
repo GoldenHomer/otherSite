@@ -31,8 +31,7 @@ function drawOnCanvas(color, plots) {
 	ctx.beginPath();
 	ctx.moveTo(plots[0].x, plots.[0].y);
 	
-	var i;
-	for(i = 1; i < plots.length; i++){
+	for(var i = 1; i < plots.length; i++){
 		ctx.lineTo(plots[i].x, plots[i].y);
 	}
 	ctx.stroke();
