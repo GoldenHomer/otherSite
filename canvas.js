@@ -1,10 +1,7 @@
-var PUBNUB_demo = PUBNUB.init({ 
-	publish_key: 'pub-c-6cc4f53c-edcc-41dc-96a5-976244127335', 
-	subscribe_key: 'sub-c-a6f5a5ee-0bbe-11e5-8990-02ee2ddab7fe' // Ain't much to do with these keys
-}); 
-		
 var canvas = document.getElementById('drawCanvas');
 var ctx = canvas.getContext('2d');
+
+ctx.lineWidth = '3';
 
 canvas.addEventListener('mousedown', startDraw, false);
 canvas.addEventListener('mousemove', draw, false);
@@ -15,9 +12,7 @@ var isActive = false;
 var plots = [];
 
 function draw(e){
-	if(!isActive) {
-		return;
-	}
+	if(!isActive) return;
 	
 	var x = e.offsetX || e.layerX - canvas.offsetLeft;
 	var y = e.offsetY || e.layerY - canvas.offsetTop;
@@ -29,10 +24,9 @@ function draw(e){
 
 function drawOnCanvas(color, plots) {
 	ctx.beginPath();
-	ctx.moveTo(plots[0].x, plots.[0].y);
+	ctx.moveTo(plots[0].x, plots[0].y);
 	
-	var i;
-	for(i = 1; i < plots.length; i++){
+	for(var i = 1; i < plots.length; i++){
 		ctx.lineTo(plots[i].x, plots[i].y);
 	}
 	ctx.stroke();

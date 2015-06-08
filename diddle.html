@@ -8,8 +8,6 @@
   <meta name="description" content="You cant see me">
   <meta name="author" content="SitePoint">
 
-  <link rel="stylesheet" href="">
-
   <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -21,5 +19,11 @@
   
   <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
   <script src="canvas.js"></script>
+  <script>
+	var PUBNUB_demo = PUBNUB.init({ 
+		publish_key: 'pub-c-6cc4f53c-edcc-41dc-96a5-976244127335', 
+		subscribe_key: 'sub-c-a6f5a5ee-0bbe-11e5-8990-02ee2ddab7fe' // Ain't much to do with these keys
+	}); 
+  </script>
 </body>
 </html>
