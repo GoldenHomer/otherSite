@@ -1,3 +1,4 @@
+//Why the hell isn't this working?
 var canvas = document.getElementById('drawCanvas');
 var ctx = canvas.getContext('2d');
 
