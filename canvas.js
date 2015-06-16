@@ -1,6 +1,13 @@
-var PUBNUB_demo = PUBNUB.init({ 
+var pubnub = PUBNUB.init({ 
 		publish_key: 'pub-c-6cc4f53c-edcc-41dc-96a5-976244127335', 
 		subscribe_key: 'sub-c-a6f5a5ee-0bbe-11e5-8990-02ee2ddab7fe' // Ain't much to do with these keys
+});
+
+var channel = 'my-draw-demo';
+
+pubnub.subscribe({ 
+	channel: channel,
+	callback: drawFromStream
 });
 
 var canvas = document.getElementById('drawCanvas');
@@ -44,5 +51,17 @@ function startDraw(e) {
 
 function endDraw(e) {
 	isActive = false;
+	pubnub.publish({ 
+		channel: channel,
+		message: { 
+			plots: plots 
+		} 
+	});
 	plots = [];
+}
+
+function drawFromStream(message) { 
+	if(!message) return;
+	ctx.beginPath();
+	drawOnCanvas(message.plots);
 }
